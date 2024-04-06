@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Ubuntu:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Kalam:wght@300;400;700&family=Ubuntu:wght@300&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .input-group {
+    @apply flex flex-col gap-1;
+  }
+  .input-field {
+    @apply p-2 rounded-md _bgClassicSoft  focus:shadow-sky-200 focus:shadow-sm  outline-0;
+  }
+  ._bgClassic {
+    background-color: rgb(5, 22, 34);
+  }
+  ._bgClassicSoft {
+    background-color: rgb(50, 64, 78);
+  }
+  ._bgClassicBetween {
+    background-color: rgb(27, 43, 56);
+  }
+  ._textTurquoise {
+    color: rgb(185, 216, 215);
+  }
+  ._textClassicSoft {
+    color: rgb(50, 64, 78);
+  }
+  ._textGold {
+    color: rgb(211, 177, 140);
+  }
+  ._bgGold {
+    background-color: rgb(211, 177, 140);
+  }
+  ._bgGoldSoft {
+    background-color: rgb(231, 208, 184);
+  }
+
+  ._borderClassicBetween {
+    border-color: rgb(27, 43, 56);
+  }
+}
+
+:root {
+  /* --bgClassic: rgb(5, 22, 34);
+  --bgClassicSoft: rgb(50, 64, 78);
+  --textTurquoise: rgb(17 147 142);
+  --textTurquoise: rgb(185, 216, 215);
+  --textGold: rgb(211, 177, 140);
+  --goldSoft: rgb(231, 208, 184); */
+}
+
+/* Fonts */
+.font-kalam-light {
+  font-family: "Kalam", cursive;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.font-kalam-regular {
+  font-family: "Kalam", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.font-kalam-bold {
+  font-family: "Kalam", cursive;
+  font-weight: 700;
+  font-style: normal;
+}
+.font-anton-regular {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+/* Fonts ends */
+
+/* Remove the increament/decreament || up/down arron from number input field */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Scrollbar customization */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--bgClassicSoft);
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/* Scrollbar customization ends*/

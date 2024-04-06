@@ -1,0 +1,14 @@
+.quickLinks span {
+  /* background-color: var(--bgClassicSoft); */
+  background-color: rgb(211 177 140);
+  color: black;
+  display: inline-block;
+  padding: 0.15rem 0.5rem 0.15rem 0.5rem;
+  border-radius: 1rem;
+  font-weight: bolder;
+  font-family: monospace;
+  font-size: large;
+}
+.quickLinks span:hover {
+  background-color: rgb(221, 164, 103);
+}
