@@ -9,7 +9,7 @@
     @apply flex flex-col gap-1;
   }
   .input-field {
-    @apply p-2 rounded-md _bgClassicSoft  focus:shadow-sky-200 focus:shadow-sm  outline-0;
+    @apply w-full p-2 rounded-md _bgClassicSoft  focus:shadow-sky-200 focus:shadow-sm  outline-0;
   }
   ._bgClassic {
     background-color: rgb(5, 22, 34);
@@ -20,24 +20,37 @@
   ._bgClassicBetween {
     background-color: rgb(27, 43, 56);
   }
-  ._textTurquoise {
-    color: rgb(185, 216, 215);
-  }
-  ._textClassicSoft {
-    color: rgb(50, 64, 78);
-  }
-  ._textGold {
-    color: rgb(211, 177, 140);
-  }
   ._bgGold {
     background-color: rgb(211, 177, 140);
   }
   ._bgGoldSoft {
     background-color: rgb(231, 208, 184);
   }
-
+  ._textClassic {
+    color: rgb(5, 22, 34);
+  }
+  ._textTurquoise {
+    color: rgb(185, 216, 215);
+  }
+  ._textClassicSoft {
+    color: rgb(50, 64, 78);
+  }
+  ._textClassicBetween {
+    color: rgb(27, 43, 56);
+  }
+  ._textGold {
+    color: rgb(211, 177, 140);
+  }
+  ._textGoldSoft {
+    color: rgb(231, 208, 184);
+  }
   ._borderClassicBetween {
     border-color: rgb(27, 43, 56);
+  }
+
+  /* Letter spacing */
+  .letter-spacing-05 {
+    letter-spacing: 0.5rem;
   }
 }
 

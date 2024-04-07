@@ -1,4 +1,5 @@
 import JobCard from "./ui/home/jobcard/JobCard";
+import LinkButton from "./ui/signin/LinkButton";
 
 export default function Home() {
   return (
@@ -10,16 +11,12 @@ export default function Home() {
         </h3>
         <h1 className="_textGold text-6xl">Apply, get hired, be happy</h1>
       </div>
-      <div className="_textGold text-4xl flex justify-center gap-3 border-t border-b _borderClassicBetween py-5 font-kalam-light">
+      <div className="_textGold text-4xl flex items-center justify-center gap-3 border-t border-b _borderClassicBetween py-5 font-kalam-light">
         <span>Do you</span>
-        <button className="px-2 py-1 rounded-md _bgClassicBetween hover:_bgClassicSoft">
-          want to hire
-        </button>
+        <LinkButton path="/employer/signup" text="want to hire" />
         <span>or</span>
-        <button className="px-2 py-1 rounded-md _bgClassicBetween hover:_bgClassicSoft">
-          <span>want to be hired</span>
-        </button>
-        ?
+        <LinkButton path="/signup" text="want to be hired" />
+        <span>?</span>
       </div>
       <div className="space-y-5">
         <h2 className="font-anton-regular text-center text-3xl py-3  border-t border-b _borderClassicBetween">
@@ -31,7 +28,7 @@ export default function Home() {
           <JobCard />
         </div>
         <div className="text-center">
-          <button className="_bgGold hover:bgGoldSoft text-slate-950 font-anton-regular rounded px-5 py-2 text-xl">
+          <button className="_bgGold hover:_bgGoldSoft text-slate-950 font-anton-regular rounded px-5 py-2 text-xl">
             Let's start
           </button>
         </div>
@@ -40,9 +37,7 @@ export default function Home() {
         <h2 className="font-anton-regular text-center text-3xl py-3  border-t border-b _borderClassicBetween">
           Contact us
         </h2>
-        <div className="text-center p-2">
-          Pending
-        </div>
+        <div className="text-center p-2">Pending</div>
       </div>
     </main>
   );

@@ -1,7 +1,11 @@
-import { BackBtn, SaveBtn } from "@/app/ui/home/createProfile/formControls/FormControls";
+import {
+  BackBtn,
+  SaveBtn,
+} from "@/app/ui/home/createProfile/formControls/FormControls";
 import {
   FormGroupHeader,
   InputGroup,
+  InputTextArea,
   SelectInputGroup,
 } from "@/app/ui/home/createProfile/formGroups/Groups";
 import { TbCoinRupee } from "react-icons/tb";
@@ -38,21 +42,12 @@ const ExperienceDetails = () => {
         <InputGroup id="startDate" text="Start date" type="date" coins={2} />
         <InputGroup id="endDate" text="End date" type="date" coins={2} />
       </div>
-      <div className="input-group">
-        <div className="flex items-end justify-between px-1">
-          <label htmlFor="projetDescription">Cover letter</label>
-          <div className="text-sm flex items-center gap-2">
-            <TbCoinRupee className="text-yellow-500" />
-            <span>20</span>
-          </div>
-        </div>
-        <textarea
-          id="cverLetter"
-          type="text"
-          className="input-field h-24"
-          placeholder="Add your cover letter ..."
-        />
-      </div>
+      <InputTextArea
+        id="coverletter"
+        text="Cover letter"
+        placeholder="Add your cover letter ..."
+        coins={20}
+      />
       <div className="flex items-center justify-around text-slate-950">
         <BackBtn path="/create-profile/project-details" />
         <SaveBtn />

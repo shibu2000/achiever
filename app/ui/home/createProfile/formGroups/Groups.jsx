@@ -17,26 +17,32 @@ export const FormGroupHeader = ({ text = "", addBtn = false }) => {
 
 export const InputGroup = ({
   id,
-  text,
-  type = "text",
+  text = "",
+  type,
   placeholder = "",
+  autocomplete = "on",
   coins,
 }) => {
   return (
     <div className="input-group">
-      <div className="flex items-end justify-between px-1">
-        <label htmlFor={id}>{text}:</label>
-        <div className="text-sm flex items-center gap-2">
-          <TbCoinRupee className="text-yellow-500" />
-          {coins}
+      {text && (
+        <div className="flex items-end justify-between px-1">
+          <label htmlFor={id}>{text}:</label>
+          {coins && (
+            <div className="text-sm flex items-center gap-2">
+              <TbCoinRupee className="text-yellow-500" />
+              {coins}
+            </div>
+          )}
         </div>
-      </div>
+      )}
 
       <input
         id={id}
         type={type}
-        className="input-field"
+        className={`input-field`}
         placeholder={placeholder}
+        autoComplete={autocomplete}
       />
     </div>
   );
@@ -47,10 +53,12 @@ export const SelectInputGroup = ({ id, text, coins, options }) => {
     <div className="input-group">
       <div className="flex items-end justify-between px-1">
         <label htmlFor={id}>{text}:</label>
-        <div className="text-sm flex items-center gap-2">
-          <TbCoinRupee className="text-yellow-500" />
-          <span>{coins}</span>
-        </div>
+        {coins && (
+          <div className="text-sm flex items-center gap-2">
+            <TbCoinRupee className="text-yellow-500" />
+            <span>{coins}</span>
+          </div>
+        )}
       </div>
       <select
         name="projectType"
@@ -70,6 +78,34 @@ export const SelectInputGroup = ({ id, text, coins, options }) => {
           );
         })}
       </select>
+    </div>
+  );
+};
+
+export const InputTextArea = ({
+  id = "",
+  text = "",
+  placeholder = "",
+  coins,
+  height = "h-24",
+}) => {
+  return (
+    <div className="input-group">
+      <div className="flex items-end justify-between px-1">
+        <label htmlFor="projetDescription">{text}</label>
+        {coins && (
+          <div className="text-sm flex items-center gap-2">
+            <TbCoinRupee className="text-yellow-500" />
+            <span>{coins}</span>
+          </div>
+        )}
+      </div>
+      <textarea
+        id={id}
+        type="text"
+        className={`input-field ${height}`}
+        placeholder={placeholder}
+      />
     </div>
   );
 };
