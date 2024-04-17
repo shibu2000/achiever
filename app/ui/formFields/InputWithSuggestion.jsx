@@ -76,10 +76,10 @@ const InputWithSuggestion = ({ id, text, type = "text", placeholder = "" }) => {
       {isFocused && (
         <div>
           <ul className="absolute border w-full _bgClassicSoft rounded max-h-80 overflow-y-auto no-scrollbar">
-            {filteredItems.map((item) => {
+            {filteredItems.map((item, index) => {
               return (
                 <li
-                  key={item}
+                  key={index}
                   className="p-2 hover:_bgClassicBetween"
                   onClick={() => handleSuggestionClick(item)}
                 >

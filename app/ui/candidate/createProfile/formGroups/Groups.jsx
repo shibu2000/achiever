@@ -75,9 +75,9 @@ export const SelectInputGroup = ({ id, text, coins, options }) => {
           Select type
         </option>
 
-        {options.map((optn) => {
+        {options.map((optn, index) => {
           return (
-            <option key={optn} value={optn} className="capitalize">
+            <option key={index} value={optn} className="capitalize">
               {optn}
             </option>
           );

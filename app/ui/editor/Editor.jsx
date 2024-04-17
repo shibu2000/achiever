@@ -4,6 +4,7 @@ import { MdCancel, MdFormatBold } from "react-icons/md";
 import { MdFormatListBulleted } from "react-icons/md";
 import { AiOutlineOrderedList } from "react-icons/ai";
 import { FaEraser } from "react-icons/fa6";
+import { BsQuestionDiamond } from "react-icons/bs";
 
 const Editor = ({ id, text = "", placeholder = "" }) => {
   const editorRef = useRef();
@@ -48,9 +49,7 @@ const Editor = ({ id, text = "", placeholder = "" }) => {
     <div className="container mx-auto">
       <div className="space-y-5">
         <div className="flex items-end justify-between p-1">
-          <label htmlFor={id}>
-            {text}:
-          </label>
+          <label htmlFor={id}>{text}:</label>
           <div className="flex gap-3">
             <button
               title="Bold"
@@ -80,6 +79,18 @@ const Editor = ({ id, text = "", placeholder = "" }) => {
             >
               <FaEraser />
             </button>
+
+            <div className="relative">
+              <div className="p-2 rounded _bgClassicBetween active:_bgClassicSoft peer/question">
+                <BsQuestionDiamond />
+              </div>
+              <div className="w-max mt-2 absolute right-0 hidden peer-hover/question:block _bgClassic p-2 rounded text-xs">
+                <p>** insert bold text here **</p>
+                <p>/ul insert unorder list here ul/</p>
+                <p>/ol insert order list here ol/</p>
+                <p>/eop - to end a single paragraph and list</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -90,7 +101,10 @@ const Editor = ({ id, text = "", placeholder = "" }) => {
           className="w-full resize-y min-h-52 _bgClassicSoft rounded outline-none no-scrollbar"
           placeholder={placeholder}
         />
-        <button className="p-0 rounded text-xs font-mono" onClick={handleEditorText}>
+        <button
+          className="p-0 rounded text-xs font-mono"
+          onClick={handleEditorText}
+        >
           Preview
         </button>
       </div>

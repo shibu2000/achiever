@@ -9,7 +9,7 @@ const InputRadio = ({ id, text, options = [], name = "name" }) => {
       <div className="flex gap-3 items-center">
         {options.map((option) => {
           return (
-            <span className="flex gap-1 items-center">
+            <span key={option} className="flex gap-1 items-center">
               <label htmlFor={option} className="capitalize font-semibold">
                 {option}
               </label>
