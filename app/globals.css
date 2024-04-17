@@ -17,6 +17,9 @@
   ._bgClassicSoft {
     background-color: rgb(50, 64, 78);
   }
+  ._bgClassicSoftAlpha {
+    background-color: rgba(50, 64, 78, 0.5);
+  }
   ._bgClassicBetween {
     background-color: rgb(27, 43, 56);
   }
@@ -51,6 +54,30 @@
   /* Letter spacing */
   .letter-spacing-05 {
     letter-spacing: 0.5rem;
+  }
+
+  /* bgGold button */
+  ._bgGoldBtn {
+    @apply _bgGold hover:_bgGoldSoft _textClassic px-3 py-1 rounded-lg;
+  }
+
+  /* Emeployer tabs */
+  ._tabLinks {
+    @apply px-4 py-1 rounded _bgClassicSoft hover:_bgGoldSoft hover:_textClassic;
+  }
+  ._tab-selected {
+    @apply _bgGoldSoft _textClassic;
+  }
+}
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }
 
