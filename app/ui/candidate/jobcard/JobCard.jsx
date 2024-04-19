@@ -5,7 +5,7 @@ import { MdIosShare } from "react-icons/md";
 import { MdOutlineSaveAlt } from "react-icons/md";
 import { TbCoinRupee } from "react-icons/tb";
 
-const JobCard = ({ path = "" }) => {
+const JobCard = ({ job }) => {
   const isSufficientCoin = false;
   return (
     <div className="border border-sky-950 p-4 space-y-2 rounded-lg md:w-2/3 relative">
@@ -13,7 +13,7 @@ const JobCard = ({ path = "" }) => {
         <TbCoinRupee className="text-yellow-500" />
         <span>50</span>
       </div>
-      <p className="text-3xl _textGold">Jr. Software Developer</p>
+      <p className="text-3xl _textGold">{job.jobrole}</p>
       <div className="font-sans flex gap-3 items-center">
         <Image
           src={"/avatar.png"}
@@ -24,12 +24,10 @@ const JobCard = ({ path = "" }) => {
         />
         <span className="text-xl">Tuespot</span>
       </div>
-      <p className="font-mono">
-        Location: 36 sarkar lane, sreemani market, Kolkata, 700007
-      </p>
+      <p className="font-mono">Location: {job.job_loc}</p>
       <p>CTC/Stipend: 10000/month</p>
       <div>
-        <h3>Experience Required:</h3>
+        <h3>Experience Required: {job.experience}</h3>
         <ul className="list-disc list-inside text-sm">
           <li>Good knowledge n SDLC</li>
           <li>Ability to work with the team members</li>
@@ -39,7 +37,7 @@ const JobCard = ({ path = "" }) => {
       <div className="px-2 flex justify-between items-center">
         <div className="flex items-center gap-1">
           <Link
-            href={path}
+            href={`/candidate/home/jobs/details?id=${job.id}`}
             className="bg-sky-950 rounded-md p-2 flex items-center justify-center gap-2"
           >
             Apply <FaRegPenToSquare />

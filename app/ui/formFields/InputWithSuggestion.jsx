@@ -1,8 +1,14 @@
 "use client";
-import { useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useDebounce } from "use-debounce";
 
-const InputWithSuggestion = ({ id, text, type = "text", placeholder = "" }) => {
+const InputWithSuggestion = ({
+  id,
+  text,
+  name = "",
+  type = "text",
+  placeholder = "",
+}) => {
   const [suggestionList, setSuggestionList] = useState([
     "HTML",
     "CSS",
@@ -19,7 +25,9 @@ const InputWithSuggestion = ({ id, text, type = "text", placeholder = "" }) => {
   const [qry] = useDebounce(query, 700);
 
   const [skillList, setSkillList] = useState([]);
+
   const [isFocused, setIsFocused] = useState(false);
+  const inputSkillList = JSON.stringify(skillList);
   const inputRef = useRef();
 
   const filterItems = () => {
@@ -72,6 +80,7 @@ const InputWithSuggestion = ({ id, text, type = "text", placeholder = "" }) => {
           }, 10000);
         }}
       />
+      <input hidden type="text" name={name} value={inputSkillList} />
 
       {isFocused && (
         <div>

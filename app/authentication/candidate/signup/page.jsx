@@ -2,12 +2,10 @@
 import { IoLogoGoogle } from "react-icons/io5";
 import { LiaLinkedinIn } from "react-icons/lia";
 import { useState } from "react";
-import {
-  InputGroup,
-  OtpInputGroup,
-} from "@/app/ui/candidate/createProfile/formGroups/Groups";
+import { InputGroup } from "@/app/ui/candidate/createProfile/formGroups/Groups";
 import DividerWithText from "@/app/ui/signin/DividerWithText";
 import Link from "next/link";
+import OTPInputField from "@/app/ui/formFields/OTPInputField";
 
 const PageSignup = () => {
   const [isOTPSend, setIsOTPSend] = useState(false);
@@ -44,7 +42,7 @@ const PageSignup = () => {
           />
 
           {isOTPSend && (
-            <OtpInputGroup
+            <OTPInputField
               id="emailid"
               disable={true}
               receiver="xyz@email.com"
@@ -68,7 +66,12 @@ const PageSignup = () => {
                 <button type="submit">Sign up</button>
               </Link>
             )}
-            <Link href='/authentication/candidate/signin' className="hover:underline">Already registerd? sign in</Link>
+            <Link
+              href="/authentication/candidate/signin"
+              className="hover:underline"
+            >
+              Already registerd? sign in
+            </Link>
           </div>
         </form>
       </div>

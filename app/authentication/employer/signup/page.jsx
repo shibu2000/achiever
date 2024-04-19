@@ -1,10 +1,8 @@
 "use client";
-import {
-  InputGroup,
-  OtpInputGroup,
-} from "@/app/ui/candidate/createProfile/formGroups/Groups";
+import { InputGroup } from "@/app/ui/candidate/createProfile/formGroups/Groups";
 import { useState } from "react";
 import Link from "next/link";
+import OTPInputField from "@/app/ui/formFields/OTPInputField";
 
 const Signup = () => {
   const [isOTPSend, setIsOTPSend] = useState(false);
@@ -45,7 +43,7 @@ const Signup = () => {
           />
 
           {isOTPSend && (
-            <OtpInputGroup
+            <OTPInputField
               id="emailid"
               disable={true}
               receiver="shibudhara147@gmail.com"
@@ -59,7 +57,7 @@ const Signup = () => {
             autocomplete="off"
           />
           {isOTPSend && (
-            <OtpInputGroup id="mobileid" disable={true} receiver="0987654321" />
+            <OTPInputField id="mobileid" disable={true} receiver="0987654321" />
           )}
 
           <div className="flex flex-col items-center pt-3 space-y-1">

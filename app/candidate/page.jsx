@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 
 const Candidate = () => {
-  redirect("/candidate/home");
+  redirect("/candidate/home/jobs");
 };
 
 export default Candidate;

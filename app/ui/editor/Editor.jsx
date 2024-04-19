@@ -6,7 +6,7 @@ import { AiOutlineOrderedList } from "react-icons/ai";
 import { FaEraser } from "react-icons/fa6";
 import { BsQuestionDiamond } from "react-icons/bs";
 
-const Editor = ({ id, text = "", placeholder = "" }) => {
+const Editor = ({ id, text = "", name = "", placeholder = "" }) => {
   const editorRef = useRef();
   const [filterData, setFilterData] = useState([]);
   const [textPreview, setTextPreview] = useState(false);
@@ -98,6 +98,7 @@ const Editor = ({ id, text = "", placeholder = "" }) => {
         <textarea
           id={id}
           ref={editorRef}
+          name={name}
           className="w-full resize-y min-h-52 _bgClassicSoft rounded outline-none no-scrollbar"
           placeholder={placeholder}
         />
