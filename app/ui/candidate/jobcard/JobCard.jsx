@@ -25,13 +25,18 @@ const JobCard = ({ job }) => {
         <span className="text-xl">Tuespot</span>
       </div>
       <p className="font-mono">Location: {job.job_loc}</p>
-      <p>CTC/Stipend: 10000/month</p>
+      <p>CTC: {job.salary}</p>
       <div>
         <h3>Experience Required: {job.experience}</h3>
         <ul className="list-disc list-inside text-sm">
-          <li>Good knowledge n SDLC</li>
-          <li>Ability to work with the team members</li>
-          <li>Manage work decipline and through the best out of knowledge</li>
+          {job.job_details
+            .replace("/ul", "")
+            .replace("ul/", "")
+            .replace("/eop", "")
+            .split("#")
+            .map((list, index) => {
+              return list.length > 0 && <li key={index}>{list}</li>;
+            })}
         </ul>
       </div>
       <div className="px-2 flex justify-between items-center">

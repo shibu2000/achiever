@@ -1,11 +1,15 @@
+import { redirect } from "next/navigation";
 import { connectToDB } from "../dbConnection";
 import { Job } from "../model/job";
+import { revalidatePath } from "next/cache";
 
 export const addJob = async (formData) => {
   "use server";
   const {
+    category,
     jobrole,
     job_loc,
+    salary,
     job_details,
     experience,
     job_type,
@@ -16,9 +20,11 @@ export const addJob = async (formData) => {
   try {
     connectToDB();
     const newJob = new Job({
+      category,
       jobrole,
       job_loc,
       skills,
+      salary,
       job_details,
       experience,
       job_type,
@@ -29,4 +35,6 @@ export const addJob = async (formData) => {
   } catch (error) {
     throw new Error(error);
   }
+  revalidatePath("/employer/jobs");
+  redirect("/employer/jobs");
 };

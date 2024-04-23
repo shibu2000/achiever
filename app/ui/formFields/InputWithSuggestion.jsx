@@ -27,7 +27,7 @@ const InputWithSuggestion = ({
   const [skillList, setSkillList] = useState([]);
 
   const [isFocused, setIsFocused] = useState(false);
-  const inputSkillList = JSON.stringify(skillList);
+  const inputSkillListRef = useRef();
   const inputRef = useRef();
 
   const filterItems = () => {
@@ -80,7 +80,12 @@ const InputWithSuggestion = ({
           }, 10000);
         }}
       />
-      <input hidden type="text" name={name} value={inputSkillList} />
+      <input
+        hidden
+        type="text"
+        name={name}
+        defaultValue={JSON.stringify(skillList)}
+      />
 
       {isFocused && (
         <div>

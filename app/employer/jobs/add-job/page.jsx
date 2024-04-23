@@ -12,6 +12,25 @@ const AddNewJob = () => {
           Add new job
         </h1>
         <form action={addJob} className="space-y-3">
+          <SelectInputGroup
+            id="category"
+            text="Select job category"
+            name="category"
+            options={[
+              "IT",
+              "Software",
+              "Hardware",
+              "Business",
+              "Networking",
+              "Sales",
+              "General",
+              "Manager",
+              "Medical",
+              "Security",
+              "Management",
+              "Shop",
+            ]}
+          />
           <InputGroup
             id="jobrole"
             name="jobrole"
@@ -29,6 +48,12 @@ const AddNewJob = () => {
             text="Skills"
             name="skills"
             placeholder="Seperate skills by comma"
+          />
+          <InputGroup
+            id="salary"
+            name="salary"
+            text="CTC"
+            placeholder="15000 - 150000/month"
           />
           <Editor
             id="job-details"

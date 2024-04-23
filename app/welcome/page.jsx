@@ -1,7 +1,9 @@
+import { fetchJobsOnWelcome } from "../lib/action/welcome";
 import JobCard from "../ui/candidate/jobcard/JobCard";
 import LinkButton from "../ui/signin/LinkButton";
 
-const Welcome = () => {
+const Welcome = async () => {
+  const threeJobs = await fetchJobsOnWelcome();
   return (
     <main className="container mx-auto p-20 space-y-20">
       <div className="text-center font-kalam-regular space-y-5">
@@ -29,9 +31,9 @@ const Welcome = () => {
           Latest posted jobs
         </h2>
         <div className="flex flex-col items-center space-y-5">
-          <JobCard />
-          <JobCard />
-          <JobCard />
+          {threeJobs.map((job, index) => {
+            return <JobCard key={index} job={job} />;
+          })}
         </div>
         <div className="text-center">
           <button className="_bgGold hover:_bgGoldSoft text-slate-950 font-anton-regular rounded px-5 py-2 text-xl">
