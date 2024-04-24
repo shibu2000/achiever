@@ -4,7 +4,7 @@ import { IoMdNotifications } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { GiTwoCoins } from "react-icons/gi";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -14,7 +14,10 @@ const Navbar = () => {
     <nav className="p-1 _bgClassicSoft sticky top-0 z-50">
       <div className="container flex mx-auto items-center justify-center">
         <div className="text-center">
-          <Link href="/home" className="_textGold text-3xl font-kalam-regular">
+          <Link
+            href="/candidate/home"
+            className="_textGold text-3xl font-kalam-regular"
+          >
             Achiever
           </Link>
           <div className="text-xs text-right font-kalam-light">
@@ -24,7 +27,7 @@ const Navbar = () => {
 
         <div className="flex-1 flex justify-center gap-3 text-xl cursor-pointer">
           <Link
-            href="/home/internships"
+            href="/candidate/home/internships"
             className={`p-2 ${
               homeType === "internships" ? "border-b" : ""
             } border-sky-200`}
@@ -32,7 +35,7 @@ const Navbar = () => {
             Internships
           </Link>
           <Link
-            href="/home/jobs"
+            href="/candidate/home/jobs"
             className={`p-2 ${
               homeType === "jobs" ? "border-b" : ""
             } border-sky-200`}
@@ -40,7 +43,7 @@ const Navbar = () => {
             Jobs
           </Link>
           <Link
-            href="/home/courses"
+            href="/candidate/home/courses"
             className={`p-2 ${
               homeType === "courses" ? "border-b" : ""
             } border-sky-200`}
@@ -55,7 +58,7 @@ const Navbar = () => {
           </div>
 
           <Link
-            href="/home/message"
+            href="/candidate/home/message"
             className={`p-2 rounded-full ${
               homeType === "message" ? "bg-slate-800" : ""
             }`}
@@ -63,7 +66,7 @@ const Navbar = () => {
             <RiMessage3Fill className="cursor-pointer" />
           </Link>
           <Link
-            href="/home/notification"
+            href="/candidate/home/notification"
             className={`p-2 rounded-full ${
               homeType === "notification" ? "bg-slate-800" : ""
             }`}
@@ -71,7 +74,7 @@ const Navbar = () => {
             <IoMdNotifications className="cursor-pointer" />
           </Link>
           <Link
-            href="/profile"
+            href="/candidate/profile"
             className={`p-2 rounded-full ${
               homeType === "profile" ? "bg-slate-800" : ""
             }`}

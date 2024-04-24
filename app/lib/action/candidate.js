@@ -3,7 +3,7 @@ import { Job } from "../model/job";
 
 export const fetchJobs = async () => {
   try {
-    connectToDB();
+    await connectToDB();
     const jobs = await Job.find();
     return jobs;
   } catch (error) {
@@ -12,8 +12,8 @@ export const fetchJobs = async () => {
 };
 export const fetchJobById = async (id) => {
   try {
-    connectToDB();
-    const details = Job.findById(id);
+    await connectToDB();
+    const details = await Job.findById(id);
     return details;
   } catch (error) {
     throw new Error(error);
