@@ -1,5 +1,5 @@
-import { BackBtn, SaveBtn } from "@/app/ui/candidate/createProfile/formControls/FormControls";
-import { FormGroupHeader, InputGroup, InputTextArea, SelectInputGroup } from "@/app/ui/candidate/createProfile/formGroups/Groups";
+import { BackBtn, SaveBtn } from "@/app/ui/formFields/FormControls";
+import { FormGroupHeader, InputGroup, InputTextArea, SelectInputGroup } from "@/app/ui/formFields/InputFields";
 
 const ExperienceDetails = () => {
   return (

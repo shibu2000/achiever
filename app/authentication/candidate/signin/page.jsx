@@ -2,12 +2,10 @@
 import { IoLogoGoogle } from "react-icons/io5";
 import { LiaLinkedinIn } from "react-icons/lia";
 import { useState } from "react";
-import {
-  InputGroup,
-  OtpInputGroup,
-} from "@/app/ui/candidate/createProfile/formGroups/Groups";
 import DividerWithText from "@/app/ui/signin/DividerWithText";
 import Link from "next/link";
+import { InputGroup } from "@/app/ui/formFields/InputFields";
+import OTPInputField from "@/app/ui/formFields/OTPInputField";
 
 const CandidateSignin = () => {
   const [isOTPSend, setIsOTPSend] = useState(false);
@@ -40,7 +38,7 @@ const CandidateSignin = () => {
           />
 
           {isOTPSend && (
-            <OtpInputGroup
+            <OTPInputField
               id="emailotp"
               disable={true}
               receiver="shibudhara147@gmail.com"

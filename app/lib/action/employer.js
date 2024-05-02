@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { connectToDB } from "../dbConnection";
 import { Job } from "../model/job";
 import { revalidatePath } from "next/cache";
+import { Internship } from "../model/internship";
 
 export const addJob = async (formData) => {
   "use server";
@@ -35,6 +36,40 @@ export const addJob = async (formData) => {
   } catch (error) {
     throw new Error(error);
   }
-  revalidatePath("/employer/jobs");
-  redirect("/employer/jobs");
+  revalidatePath("/employer/posts");
+  redirect("/employer/posts");
+};
+
+export const addInternship = async (formData) => {
+  "use server";
+  const {
+    category,
+    role,
+    location,
+    stipend,
+    responsibilities,
+    internship_duration,
+    other_details,
+    accomodation,
+  } = Object.fromEntries(formData);
+  const skills = JSON.parse(formData.get("skills"));
+  try {
+    connectToDB();
+    const newInternship = new Internship({
+      category,
+      role,
+      location,
+      skills,
+      stipend,
+      responsibilities,
+      internship_duration,
+      other_details,
+      accomodation,
+    });
+    await newInternship.save();
+  } catch (error) {
+    throw new Error(error);
+  }
+  revalidatePath("/employer/posts");
+  redirect("/employer/posts");
 };

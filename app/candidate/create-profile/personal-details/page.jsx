@@ -1,9 +1,5 @@
-import { NextBtn } from "@/app/ui/candidate/createProfile/formControls/FormControls";
-import {
-  FileInputGroup,
-  FormGroupHeader,
-  InputGroup,
-} from "@/app/ui/candidate/createProfile/formGroups/Groups";
+import { NextBtn } from "@/app/ui/formFields/FormControls";
+import { FileInputGroup, FormGroupHeader, InputGroup } from "@/app/ui/formFields/InputFields";
 
 const PersonalDetails = () => {
   return (

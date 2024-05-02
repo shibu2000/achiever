@@ -1,4 +1,4 @@
-import { SaveBtn } from "@/app/ui/candidate/createProfile/formControls/FormControls";
+import { SaveBtn } from "@/app/ui/formFields/FormControls";
 import {
   FileInputGroup,
   InputGroup,

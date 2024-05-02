@@ -1,7 +1,7 @@
 import { CiEdit } from "react-icons/ci";
 import Link from "next/link";
 
-const JobPostCard = ({ job }) => {
+const PostCard = ({ job }) => {
   return (
     <div className="px-4 py-4 w-1/4">
       <Link href="">
@@ -15,4 +15,4 @@ const JobPostCard = ({ job }) => {
   );
 };
 
-export default JobPostCard;
+export default PostCard;

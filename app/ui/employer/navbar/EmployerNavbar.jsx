@@ -25,20 +25,12 @@ const EmployerNavbar = () => {
         </div>
         <div className="flex items-center justify-center gap-5">
           <Link
-            href="/employer/jobs"
+            href="/employer/posts"
             className={`_tabLinks ${
-              homeType === "jobs" ? "_tab-selected" : ""
+              homeType === "posts" ? "_tab-selected" : ""
             }`}
           >
-            Jobs
-          </Link>
-          <Link
-            href="/employer/internships"
-            className={`_tabLinks ${
-              pathname === "internships" ? "_tab-selected" : ""
-            }`}
-          >
-            Interships
+            Posts
           </Link>
           <Link
             href="/employer/applications"

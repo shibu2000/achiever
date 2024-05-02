@@ -75,6 +75,9 @@ const JobCard = async ({ job }) => {
           <MdIosShare className="cursor-pointer" title="Share" />
         </div>
       </div>
+      <h6 className="text-xs text-slate-400">
+        Posted on: {job.createdAt.toString().slice(0, 15)}
+      </h6>
     </div>
   );
 };

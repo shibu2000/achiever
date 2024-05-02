@@ -63,7 +63,14 @@ export const InputGroup = ({
   );
 };
 
-export const SelectInputGroup = ({ id, text, name = "", coins, options }) => {
+export const SelectInputGroup = ({
+  id,
+  text,
+  name = "",
+  coins,
+  options,
+  placeholder = "Select Type",
+}) => {
   return (
     <div className="input-group">
       {text && <LabelForInput id={id} text={text} coins={coins} />}
@@ -74,7 +81,7 @@ export const SelectInputGroup = ({ id, text, name = "", coins, options }) => {
         defaultValue={"default"}
       >
         <option hidden value="default">
-          Select type
+          {placeholder}
         </option>
 
         {options.map((optn, index) => {

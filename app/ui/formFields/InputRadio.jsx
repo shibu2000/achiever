@@ -13,7 +13,7 @@ const InputRadio = ({ id, text, options = [], name = "name" }) => {
               <label htmlFor={option} className="capitalize font-semibold">
                 {option}
               </label>
-              <input type="radio" name={name} id={option} value={name} />;
+              <input type="radio" name={name} id={option} value={option} />;
             </span>
           );
         })}

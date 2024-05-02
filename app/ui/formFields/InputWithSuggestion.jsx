@@ -27,7 +27,6 @@ const InputWithSuggestion = ({
   const [skillList, setSkillList] = useState([]);
 
   const [isFocused, setIsFocused] = useState(false);
-  const inputSkillListRef = useRef();
   const inputRef = useRef();
 
   const filterItems = () => {

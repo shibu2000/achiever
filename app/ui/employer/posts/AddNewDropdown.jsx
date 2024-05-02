@@ -23,15 +23,15 @@ const AddNewDropdown = () => {
       )}
       {isClicked && (
         <Fade direction="up" duration={700}>
-          <div className="absolute w-full mt-2 right-0 _bgClassicSoft rounded flex flex-col shadow-sm shadow-slate-800">
+          <div className="absolute w-full mt-2 left-0 _bgClassicSoft rounded flex flex-col shadow-sm shadow-slate-800">
             <Link
-              href="/employer/jobs/add-job"
+              href="/employer/posts/add-job"
               className="px-2 py-1 rounded hover:_bgClassicBetween"
             >
               Job
             </Link>
             <Link
-              href="/employer/jobs/add-internship"
+              href="/employer/posts/add-internship"
               className="px-2 py-1 rounded hover:_bgClassicBetween"
             >
               Internship

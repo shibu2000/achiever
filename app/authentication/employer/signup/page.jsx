@@ -1,8 +1,8 @@
 "use client";
-import { InputGroup } from "@/app/ui/candidate/createProfile/formGroups/Groups";
 import { useState } from "react";
 import Link from "next/link";
 import OTPInputField from "@/app/ui/formFields/OTPInputField";
+import { InputGroup } from "@/app/ui/formFields/InputFields";
 
 const Signup = () => {
   const [isOTPSend, setIsOTPSend] = useState(false);
