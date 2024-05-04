@@ -6,85 +6,49 @@ import DividerWithText from "@/app/ui/signin/DividerWithText";
 import Link from "next/link";
 import OTPInputField from "@/app/ui/formFields/OTPInputField";
 import { InputGroup } from "@/app/ui/formFields/InputFields";
-import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { generateOTP } from "@eternaljs/otp-generator";
+import { candidateRegistraton } from "@/app/lib/action/candidate";
 
 const PageSignup = () => {
   const [isOTPSend, setIsOTPSend] = useState(false);
-  const [otp, setOtp] = useState("");
 
   const form = useRef();
+
   //Regex for email validation
   const EMAIL_REGEX = new RegExp(/\S+@\S+\.\S+/);
 
   const handleSendOTP = async (e) => {
     e.preventDefault(e);
 
+    const firstname = form.current.querySelector('input[name="firstname"]');
+    const email = form.current.querySelector('input[name="user_email"]');
+
     let isFirstname = false;
     let isEmail = false;
 
-    const firstname = form.current
-      .querySelector('input[name="firstname"]')
-      .value.trim();
-    const email = form.current
-      .querySelector('input[name="user_email"]')
-      .value.trim();
-
-    firstname.length === 0
+    firstname.value.trim().length === 0
       ? toast.error("First name can't be empty")
       : (isFirstname = true);
-    EMAIL_REGEX.test(email)
+    EMAIL_REGEX.test(email.value.trim())
       ? (isEmail = true)
       : toast.error("Enter valid email");
 
-    console.log(email);
-
-    setOtp(() => generateOTP(6));
-
-    const data = {
-      service_id: "YOUR_SERVICE_ID",
-      template_id: "YOUR_TEMPLATE_ID",
-      user_id: "YOUR_PUBLIC_KEY",
-      template_params: {
-        firstname,
-        email,
-        otp,
-      },
-    };
-    isEmail &&
-      isFirstname &&
-      (await fetch("https://api.emailjs.com/api/v1.0/email/send", {
-        method: "POST",
-        body: data,
-      }).then(
-        (res) => {
-          console.log("hello");
-          console.log(res);
-        },
-        (error) => {}
-      ));
-
-    // isEmail &&
-    //   isFirstname &&
-    //   emailjs
-    //     .sendForm(
-    //       process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-    //       process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-    //       form.current,
-    //       process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-    //     )
-    //     .then(
-    //       (res) => {
-    //         console.log(res);
-    //         toast.success("OTP send successful");
-    //         setIsOTPSend(true);
-    //       },
-    //       (error) => {
-    //         toast.error(`Try again...${error.text}`);
-    //       }
-    //     );
+    if (isEmail && isFirstname) {
+      try {
+        const res = await fetch("/api/otpmail", {
+          method: "POST",
+          body: JSON.stringify({
+            username: firstname.value,
+            user_email: email.value,
+          }),
+        });
+        toast.success("OTP send! Check your inbox");
+        setIsOTPSend(true);
+      } catch (error) {
+        toast.error("Failed! Try again");
+      }
+    }
   };
 
   const handleSubmit = (formData) => {
@@ -110,7 +74,12 @@ const PageSignup = () => {
           </button>
         </div>
         <DividerWithText text="or" />
-        <form ref={form} className="w-full space-y-5" onSubmit={handleSubmit}>
+        <form
+          ref={form}
+          action={candidateRegistraton}
+          className="w-full space-y-5"
+          onSubmit={handleSubmit}
+        >
           <div className="flex gap-2">
             <InputGroup
               id="firstName"
@@ -132,12 +101,13 @@ const PageSignup = () => {
             autocomplete="off"
             name="user_email"
           />
-          <input type="hidden" name="otp" defaultValue={otp} />
           {isOTPSend && (
             <OTPInputField
               id="emailid"
-              disable={true}
-              receiver="xyz@email.com"
+              receiver={form.current
+                .querySelector('input[name="user_email"]')
+                .value.trim()}
+              name="otp"
             />
           )}
 
@@ -150,12 +120,13 @@ const PageSignup = () => {
                 Send OTP
               </button>
             ) : (
-              <Link
+              <button
                 href={"/authentication/candidate/signin"}
                 className="w-1/2 py-2 _bgGold hover:_bgGoldSoft _textClassic rounded-lg font-bold text-center"
+                type="submit"
               >
-                <button type="submit">Sign up</button>
-              </Link>
+                Sign up
+              </button>
             )}
             <Link
               href="/authentication/candidate/signin"

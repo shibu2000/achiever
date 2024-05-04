@@ -1,7 +1,7 @@
 "use client";
 import { Fade } from "react-awesome-reveal";
 
-const OTPInputField = ({ id, disable = true, receiver = "" }) => {
+const OTPInputField = ({ id, receiver = "", name = "" }) => {
   return (
     <div className="space-y-1">
       <Fade cascade damping={0.5} triggerOnce>
@@ -11,12 +11,12 @@ const OTPInputField = ({ id, disable = true, receiver = "" }) => {
             type="text"
             className={`input-field text-center letter-spacing-05`}
             placeholder="OTP"
-            disabled={disable}
+            name={name}
           />
         </div>
         {receiver && (
           <p className="text-xs text-center font-mono _textGold">
-            OTP send on {receiver}
+            OTP send to {receiver}
           </p>
         )}
       </Fade>

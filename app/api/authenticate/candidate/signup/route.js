@@ -1,5 +1,5 @@
 import { connectToDB } from "@/app/lib/dbConnection";
-import { NextRequest, NextResponse } from "next/server";
+import {NextResponse } from "next/server";
 
 connectToDB();
 
