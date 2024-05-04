@@ -14,6 +14,7 @@ const OTPInputField = ({ id, receiver = "", name = "" }) => {
             name={name}
           />
         </div>
+        
         {receiver && (
           <p className="text-xs text-center font-mono _textGold">
             OTP send to {receiver}

@@ -16,7 +16,7 @@ export const candidateRegistraton = async (formData) => {
       const res = await Candidate.findByIdAndUpdate(isPresent.id, {
         lastname,
         isVerified: true,
-        otp: "1",
+        otp: "",
       });
       console.log(res);
     } catch (error) {

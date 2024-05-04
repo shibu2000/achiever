@@ -50,14 +50,6 @@ const PageSignup = () => {
       }
     }
   };
-
-  const handleSubmit = (formData) => {
-    // console.log(formData);
-    // const submit = fetch("/api/authenticate/candidate/signup", {
-    //   method: "POST",
-    // });
-  };
-
   return (
     <div className="container mx-auto flex flex-col items-center justify-center p-5 gap-5">
       <h1 className="md:w-1/2 text-center py-3 _textGold md:text-4xl text-2xl font-kalam-regular border-b _borderClassicBetween">
@@ -78,7 +70,6 @@ const PageSignup = () => {
           ref={form}
           action={candidateRegistraton}
           className="w-full space-y-5"
-          onSubmit={handleSubmit}
         >
           <div className="flex gap-2">
             <InputGroup

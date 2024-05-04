@@ -11,8 +11,9 @@ export async function POST(req) {
 
   const { username, user_email } = data;
 
-  const isPresent = await Candidate.findOne({ email: user_email });
-  console.log(isPresent);
+  
+ 
+
 
   return NextResponse.json({ success: true }, { status: 200 });
 
