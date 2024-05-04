@@ -9,8 +9,10 @@ import { InputGroup } from "@/app/ui/formFields/InputFields";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { candidateRegistraton } from "@/app/lib/action/candidate";
+import { useRouter } from "next/navigation";
 
 const PageSignup = () => {
+  const router = useRouter();
   const [isOTPSend, setIsOTPSend] = useState(false);
 
   const form = useRef();
@@ -21,33 +23,54 @@ const PageSignup = () => {
   const handleSendOTP = async (e) => {
     e.preventDefault(e);
 
-    const firstname = form.current.querySelector('input[name="firstname"]');
-    const email = form.current.querySelector('input[name="user_email"]');
+    const firstname = form.current
+      .querySelector('input[name="firstname"]')
+      .value.trim();
+    const lastname = form.current
+      .querySelector('input[name="lastname"]')
+      .value.trim();
+    const email = form.current
+      .querySelector('input[name="user_email"]')
+      .value.trim();
 
     let isFirstname = false;
     let isEmail = false;
 
-    firstname.value.trim().length === 0
+    firstname.length === 0
       ? toast.error("First name can't be empty")
       : (isFirstname = true);
-    EMAIL_REGEX.test(email.value.trim())
+    EMAIL_REGEX.test(email)
       ? (isEmail = true)
       : toast.error("Enter valid email");
 
     if (isEmail && isFirstname) {
-      try {
-        const res = await fetch("/api/otpmail", {
-          method: "POST",
-          body: JSON.stringify({
-            username: firstname.value,
-            user_email: email.value,
-          }),
-        });
-        toast.success("OTP send! Check your inbox");
+      const res = await fetch("/api/authenticate/candidate/signup", {
+        method: "POST",
+        body: JSON.stringify({
+          firstname: firstname,
+          lastname: lastname,
+          email: email,
+        }),
+      });
+      const response = await res.json();
+      if (res.ok) {
+        toast.success(response.message);
         setIsOTPSend(true);
-      } catch (error) {
-        toast.error("Failed! Try again");
+      } else {
+        toast.error(response.message);
       }
+    }
+  };
+
+  const handleSubmit = async (formData) => {
+    const response = await candidateRegistraton(formData);
+    if (response.ok) {
+      toast.success(`${response.message}. redirecting to sign in page.`);
+      setTimeout(() => {
+        router.push("/authentication/candidate/signin");
+      }, 5000);
+    } else {
+      toast.error(response.message);
     }
   };
   return (
@@ -66,11 +89,7 @@ const PageSignup = () => {
           </button>
         </div>
         <DividerWithText text="or" />
-        <form
-          ref={form}
-          action={candidateRegistraton}
-          className="w-full space-y-5"
-        >
+        <form ref={form} action={handleSubmit} className="w-full space-y-5">
           <div className="flex gap-2">
             <InputGroup
               id="firstName"
